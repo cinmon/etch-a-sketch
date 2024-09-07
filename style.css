@@ -4,6 +4,7 @@ body {
     flex-direction: column;
     height: 100vh;
     width: 100vw;
+    background-color: #1c181a;
 }
 
 .container {
@@ -20,11 +21,20 @@ body {
 .square {
     width: 150px;
     height: auto;
-    background-color: #F6D6D6;
-    border: 2px solid white;
+    background-color: #353535;
+    border: 2px solid #1c181a;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: #a88282;
+}
+
+.square:hover {
+    background-color: #F6D6D6;
+    transform: scale(1.2);
+}
+
+.square:not(:hover) {
+    transition: background-color 1s ease 0.5s; /* Delay when going back to original color */
 }
