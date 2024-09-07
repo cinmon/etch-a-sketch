@@ -16,7 +16,7 @@ for(let i = 1 ; i <= (16 * 16) ; i++) {
         console.log("Created square no. " + i);
     }
 
-    square.textContent = "Square no. " + i;
+    square.textContent = i;
     
     if(i % 16 == 0) {
         createRow = true;

@@ -1,18 +1,30 @@
-.body {
-    margin: 0px;
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
 }
 
 .container {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .row {
     display: flex;
+    height: 100vh;
 }
 
 .square {
     width: 150px;
-    height: 150px;
-    background-color: aqua;
+    height: auto;
+    background-color: #F6D6D6;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #a88282;
 }
