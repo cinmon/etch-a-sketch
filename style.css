@@ -7,6 +7,14 @@ body {
     background-color: #1c181a;
 }
 
+.options {
+    display: flex;
+    color: white;
+    justify-content: center;
+    gap: 10px;
+    font-family: Montserrat, Inter, Arial, sans-serif;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -26,15 +34,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Montserrat, Inter, Arial, sans-serif;
     color: #a88282;
 }
 
-.square:hover {
+/*.square:hover {
     background-color: #F6D6D6;
     transform: scale(1.2);
-}
+} * /
 
 .square:not(:hover) {
-    transition: background-color 1s ease 0.5s; /* Delay when going back to original color */
-}
+    transition: background-color 1s ease 0.5s;
+} */
