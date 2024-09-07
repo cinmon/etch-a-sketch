@@ -1,7 +1,18 @@
+.body {
+    margin: 0px;
+}
+
 .container {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
     display: flex;
 }
 
-.container div {
+.square {
+    width: 150px;
+    height: 150px;
     background-color: aqua;
 }
