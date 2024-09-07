@@ -10,9 +10,18 @@ body {
 .options {
     display: flex;
     color: white;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-around;
     font-family: Montserrat, Inter, Arial, sans-serif;
+}
+
+.color-options {
+    display: flex;
+    gap: 15px;
+}
+
+.grid-size-option {
+    display: flex;
+    gap: 15px;
 }
 
 .container {

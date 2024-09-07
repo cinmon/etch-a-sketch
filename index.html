@@ -11,13 +11,20 @@
     <body>
 
         <div class="options">
-            <label for="hovering">Hover effect</label>
-            <input type="radio" name="hovering">
-            <label for="row-squares-number">Number of rows</label>
-            <input type="text" name="row-squares-number">
-            <label for="column-squares-number">Number of columns</label>
-            <input type="text" name="column-squares-number">
-            <button class="apply-button">Apply</button>
+            <div class="color-options">
+                <label for="hovering">Hover effect</label>
+                <input type="radio" name="hovering">
+                <label for="hovering">Painting effect</label>
+                <input type="radio" name="hovering">
+            </div>
+            
+            <div class="grid-size-option">
+                <label for="row-squares-number">Number of rows</label>
+                <input type="text" name="row-squares-number">
+                <label for="column-squares-number">Number of columns</label>
+                <input type="text" name="column-squares-number">
+                <button class="apply-button">Apply</button>
+            </div>
         </div>
 
         <div class="container"></div>
