@@ -27,9 +27,10 @@ function painting_event(squares_list) {
 function load_grid(size, size_changed = false) {
 
     if(size_changed) {
-
-        document.querySelector(".container")
-
+        const row_lists = document.querySelectorAll(".row");
+        row_lists.forEach((row) => {
+            document.querySelector(".container").removeChild(row);
+        });
     }
 
     for(let i = 1 ; i <= (size * size) ; i++) {
@@ -88,9 +89,10 @@ radio_buttons.forEach((radio) => {
 });
 
 const change_size_button = document.querySelector(".change-size-button");
-change_size_button.addEventListener("onclick", () => {
+change_size_button.addEventListener("click", () => {
+    console.log("Button pressed.");
     let new_size = +(prompt('Enter a number for the grid size. Note that the grid is always square. E.g., if you input "16" it wil form a 16x16 grid.'));
-    if(new_size != null && isInteger(new_size)) {
-
+    if(new_size != null && Number.isInteger(new_size)) {
+        load_grid(new_size, true);
     }
-})
+});
