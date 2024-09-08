@@ -8,6 +8,7 @@ function square_coloring(square) {
 
 function hovering_event(squares_list) {
     squares_list.forEach((square) => {
+        square.removeEventListener('mouseout', painting_event);
         square.addEventListener("mouseout", () => {
             square.style.transition = "background-color 0.5s ease";
             square.style.backgroundColor = "#353535";  // Revert color on mouseout
@@ -18,10 +19,20 @@ function hovering_event(squares_list) {
 
 function painting_event(squares_list) {
     squares_list.forEach((square) => {
+        square.removeEventListener('mouseout', hovering_event);
         square.addEventListener("mouseout", () => {
             square_coloring(square);
         });
     });
+}
+
+function default_color_behavior() {
+    const squares_list = document.querySelectorAll(".square");
+    if (document.querySelector('input[id="hovering-button"]').checked) {
+        hovering_event(squares_list);
+    } else if(document.querySelector('input[id="painting-button"]').checked) {
+        painting_event(squares_list);
+    }
 }
 
 function load_grid(size, size_changed = false) {
@@ -35,7 +46,7 @@ function load_grid(size, size_changed = false) {
 
     for(let i = 1 ; i <= (size * size) ; i++) {
         const square = document.createElement("div");
-        square.classList.add("square")
+        square.classList.add("square");
         square.addEventListener("mouseover", () => {
             square.style.transition = "background-color ease, transform 0.3s ease";
             square_coloring(square);
@@ -43,7 +54,7 @@ function load_grid(size, size_changed = false) {
     
         if(createRow == true) {
             row = document.createElement("div");
-            row.classList.add("row")
+            row.classList.add("row");
             createRow = false;
         }
     
@@ -61,24 +72,19 @@ function load_grid(size, size_changed = false) {
     
     }
 
+    
+    default_color_behavior();
+
 }
 
 load_grid(16);
-
-const squares_list = document.querySelectorAll(".square");
-
-// Default selection behavior
-if (document.querySelector('input[id="hovering-button"]').checked) {
-    // When the radio button with id 'hovering-button' is checked,
-    // we update the behavior of mouseout for all squares
-    hovering_event(squares_list);
-}
 
 //  Add radio button listener
 const radio_buttons = document.querySelectorAll('input[type="radio"]');
 radio_buttons.forEach((radio) => {
     radio.addEventListener('change', () => {
         console.log("Button changed.");
+        const squares_list = document.querySelectorAll(".square");
         if (document.querySelector('input[id="hovering-button"]').checked) {
            hovering_event(squares_list);
         }
@@ -91,8 +97,8 @@ radio_buttons.forEach((radio) => {
 const change_size_button = document.querySelector(".change-size-button");
 change_size_button.addEventListener("click", () => {
     console.log("Button pressed.");
-    let new_size = +(prompt('Enter a number for the grid size. Note that the grid is always square. E.g., if you input "16" it wil form a 16x16 grid.'));
-    if(new_size != null && Number.isInteger(new_size)) {
+    let new_size = +(prompt('Enter a number for the grid size. Note that the grid is always square. E.g., if you input "16" it wil form a 16x16 grid (max size is 100x100). '));
+    if(new_size != null && Number.isInteger(new_size) && new_size <= 100) {
         load_grid(new_size, true);
     }
 });
