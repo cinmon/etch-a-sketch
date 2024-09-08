@@ -1,6 +1,11 @@
 let row = null;
 var createRow = true;
 
+function square_coloring(square) {
+    square.style.backgroundColor = "#F6D6D6";
+    square.style.transform = "scale(1)";
+}
+
 function hovering_event(squares_list) {
     squares_list.forEach((square) => {
         square.addEventListener("mouseout", () => {
@@ -14,47 +19,52 @@ function hovering_event(squares_list) {
 function painting_event(squares_list) {
     squares_list.forEach((square) => {
         square.addEventListener("mouseout", () => {
-            square.style.backgroundColor = "#F6D6D6";
-            square.style.transform = "scale(1.2)";
+            square_coloring(square);
         });
     });
 }
 
-// MAIN
-for(let i = 1 ; i <= (16 * 16) ; i++) {
-    const square = document.createElement("div");
-    square.classList.add("square")
-    square.addEventListener("mouseover", () => {
-        square.style.transition = "background-color ease, transform 0.3s ease";
-        square.style.backgroundColor = "#F6D6D6";
-        square.style.transform = "scale(1.2)";
-    });
+function load_grid(size, size_changed = false) {
 
-    if(createRow == true) {
-        row = document.createElement("div");
-        row.classList.add("row")
-        createRow = false;
+    if(size_changed) {
+
+        document.querySelector(".container")
+
     }
 
-    if(row != null) {
-        row.appendChild(square);
-        console.log("Created square no. " + i);
-    }
-
-    square.textContent = i;
+    for(let i = 1 ; i <= (size * size) ; i++) {
+        const square = document.createElement("div");
+        square.classList.add("square")
+        square.addEventListener("mouseover", () => {
+            square.style.transition = "background-color ease, transform 0.3s ease";
+            square_coloring(square);
+        });
     
-    if(i % 16 == 0) {
-        createRow = true;
-        document.querySelector(".container").appendChild(row);
+        if(createRow == true) {
+            row = document.createElement("div");
+            row.classList.add("row")
+            createRow = false;
+        }
+    
+        if(row != null) {
+            row.appendChild(square);
+            console.log("Created square no. " + i);
+        }
+    
+        square.textContent = i;
+        
+        if(i % size == 0) {
+            createRow = true;
+            document.querySelector(".container").appendChild(row);
+        }
+    
     }
 
 }
 
-
-
+load_grid(16);
 
 const squares_list = document.querySelectorAll(".square");
-
 
 // Default selection behavior
 if (document.querySelector('input[id="hovering-button"]').checked) {
@@ -76,3 +86,11 @@ radio_buttons.forEach((radio) => {
         }
     });
 });
+
+const change_size_button = document.querySelector(".change-size-button");
+change_size_button.addEventListener("onclick", () => {
+    let new_size = +(prompt('Enter a number for the grid size. Note that the grid is always square. E.g., if you input "16" it wil form a 16x16 grid.'));
+    if(new_size != null && isInteger(new_size)) {
+
+    }
+})
