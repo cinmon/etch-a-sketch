@@ -98,7 +98,10 @@ const change_size_button = document.querySelector(".change-size-button");
 change_size_button.addEventListener("click", () => {
     console.log("Button pressed.");
     let new_size = +(prompt('Enter a number for the grid size. Note that the grid is always square. E.g., if you input "16" it wil form a 16x16 grid (max size is 100x100). '));
-    if(new_size != null && Number.isInteger(new_size) && new_size <= 100) {
+    if(new_size != null && new_size != "" && Number.isInteger(new_size) && new_size <= 100) {
         load_grid(new_size, true);
+    }
+    else {
+        alert("There was an error with the input. No changes to the size have been made.");
     }
 });
